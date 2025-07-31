@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drug Prediction Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #f8f8f8;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout a {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout a:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout">
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <div class="form-container">
+        <h2>Drug Prediction System</h2>
+        <h3 style="text-align: center; margin-bottom: 20px;">Prediction Form</h3>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <label>Patient Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Age:</label>
+            <input type="number" name="age" required>
+
+            <label>Sex:</label>
+            <select name="sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label>Blood Pressure:</label>
+            <select name="bp" required>
+                <option value="LOW">LOW</option>
+                <option value="NORMAL">NORMAL</option>
+                <option value="HIGH">HIGH</option>
+            </select>
+
+            <label>Cholesterol:</label>
+            <select name="chol" required>
+                <option value="NORMAL">NORMAL</option>
+                <option value="HIGH">HIGH</option>
+            </select>
+
+            <label>Sodium (mEq/L):</label>
+            <input type="text" name="sodium" required>
+
+            <label>Potassium (mEq/L):</label>
+            <input type="text" name="potassium" required>
+
+            <label>Sugar (mg/dL):</label>
+            <input type="text" name="sugar" required>
+
+            <label>Pulse Rate (bpm):</label>
+            <input type="text" name="pulse" required>
+
+            <label>BMI:</label>
+            <input type="text" name="bmi" required>
+
+            <input type="submit" value="Predict Drug">
+        </form>
+    </div>
+</body>
+</html>
